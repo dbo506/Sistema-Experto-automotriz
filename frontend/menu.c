@@ -6,7 +6,12 @@
 #include "../integracion/conexion.h"
 
 static void mostrarMenuPrincipal(void) {
-    mostrarEncabezado("SISTEMA EXPERTO AUTOMOTRIZ");
+    puts("\n"
+         "==========================================================\n"
+         "                          ZYTRON\n"
+         "        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ\n"
+         "==========================================================\n"
+         "\n");
     puts("  [1] Registrar vehiculo\n"
          "  [2] Seleccionar sintomas\n"
          "  [3] Ver informacion registrada\n"
@@ -20,7 +25,7 @@ static void mostrarMenuPrincipal(void) {
 
 /* -1: regreso solicitado, 0: EOF, 1: recurso ingresado. */
 static int solicitarRecurso(const char *mensaje, char *recurso, size_t capacidad) {
-    puts("\n  [0] Volver al menu principal\n");
+    puts("\n  Escriba 0 para cancelar.\n");
     if (!leerTexto(mensaje, recurso, capacidad)) return 0;
     return strcmp(recurso, "0") == 0 ? -1 : 1;
 }
@@ -67,9 +72,16 @@ int ejecutarMenu(void) {
                 break;
             case 6:
                 mostrarEncabezado("RECUPERAR SESION");
-                estado = solicitarRecurso("  Nombre o ruta de sesion: ", recurso, sizeof recurso);
-                if (!estado) return 0;
-                if (estado == -1) continue;
+                puts("  DATOS DE LA SESION\n"
+                     "  ------------------------------------------------------\n\n"
+                     "==========================================================\n"
+                     "  [0] Volver al menu principal\n");
+                if (!leerTexto("  Nombre o ruta de sesion: ", recurso, sizeof recurso)) return 0;
+                if (strcmp(recurso, "0") == 0) continue;
+                limpiarConsola();
+                mostrarEncabezado("RECUPERAR SESION");
+                puts("  RESULTADO DE LA RECUPERACION\n"
+                     "  ------------------------------------------------------\n");
                 ejecutarOperacion(RECUPERAR, &sesion, recurso);
                 break;
             case 7:
