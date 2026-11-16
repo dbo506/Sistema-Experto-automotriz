@@ -107,8 +107,9 @@ normalizar_combustible(Texto, electrico) :-
 normalizar_combustible(_, desconocido).
 
 % sistema_alimentacion_vehiculo(+Vehiculo, -SistemaAlimentacion)
-% Confirma arquitectura solo si existe un perfil para ese modelo y anio y el
-% combustible declarado coincide. No infiere arquitectura por anio/combustible.
+% Si existe un perfil catalogado para modelo y anio, valida compatibilidad con
+% el combustible declarado; si el modelo no esta catalogado, infiere la
+% arquitectura a partir del combustible normalizado y el anio de fabricacion.
 sistema_alimentacion_vehiculo(Vehiculo, Alimentacion) :-
     Vehiculo = vehiculo(Marca, Modelo, Anio, _, CombTexto),
     atom(Marca),
@@ -127,10 +128,10 @@ sistema_alimentacion_vehiculo(Vehiculo, Alimentacion) :-
         ),
         PerfilesAplicables
     ),
+    normalizar_combustible(CombTexto, CombNorm),
     (   PerfilesAplicables == []
-    ->  AlimentacionResuelta = desconocido
-    ;   normalizar_combustible(CombTexto, CombNorm),
-        (   memberchk(CombNorm-AlimentacionPerfil, PerfilesAplicables)
+    ->  alimentacion_por_anio_y_combustible(Anio, CombNorm, AlimentacionResuelta)
+    ;   (   memberchk(CombNorm-AlimentacionPerfil, PerfilesAplicables)
         ->  AlimentacionResuelta = AlimentacionPerfil
         ;   throw(error(domain_error(perfil_vehiculo_incompatible, Vehiculo), _))
         )
@@ -138,6 +139,18 @@ sistema_alimentacion_vehiculo(Vehiculo, Alimentacion) :-
     !,
     Alimentacion = AlimentacionResuelta.
 sistema_alimentacion_vehiculo(_, desconocido).
+
+% alimentacion_por_anio_y_combustible(+Anio, +CombNorm, -SistemaAlimentacion)
+% Deduce la alimentacion por anio de corte (carburador vs inyeccion) y combustible.
+alimentacion_por_anio_y_combustible(Anio, gasolina, carburador) :-
+    umbral_operativo(anio_corte_inyeccion, Corte, _),
+    Anio < Corte, !.
+alimentacion_por_anio_y_combustible(Anio, gasolina, inyeccion_electronica) :-
+    umbral_operativo(anio_corte_inyeccion, Corte, _),
+    Anio >= Corte, !.
+alimentacion_por_anio_y_combustible(_, CombNorm, Alimentacion) :-
+    combustible_catalogo(CombNorm, Alimentacion, _, _), !.
+alimentacion_por_anio_y_combustible(_, _, desconocido).
 
 % tipo_encendido_vehiculo(+Vehiculo, -TipoEncendido)
 % Deduce el encendido solo cuando el perfil confirma la arquitectura.
