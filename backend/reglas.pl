@@ -107,36 +107,44 @@ normalizar_combustible(Texto, electrico) :-
 normalizar_combustible(_, desconocido).
 
 % sistema_alimentacion_vehiculo(+Vehiculo, -SistemaAlimentacion)
-% Deduce si el vehiculo usa carburador, inyeccion_electronica, inyeccion_diesel o propulsion_electrica.
-sistema_alimentacion_vehiculo(vehiculo(Marca, Modelo, Anio, _, CombTexto), Alimentacion) :-
+% Confirma arquitectura solo si existe un perfil para ese modelo y anio y el
+% combustible declarado coincide. No infiere arquitectura por anio/combustible.
+sistema_alimentacion_vehiculo(Vehiculo, Alimentacion) :-
+    Vehiculo = vehiculo(Marca, Modelo, Anio, _, CombTexto),
     atom(Marca),
     atom(Modelo),
     integer(Anio),
     downcase_atom(Marca, MarcaNorm),
     downcase_atom(Modelo, ModeloNorm),
-    perfil_modelo_vehiculo(MarcaNorm, ModeloNorm, MinAnio, MaxAnio, CombPerfil, _, Alimentacion),
-    Anio >= MinAnio,
-    Anio =< MaxAnio,
-    normalizar_combustible(CombTexto, CombNorm),
-    (CombNorm = CombPerfil ; CombNorm = desconocido), !.
-sistema_alimentacion_vehiculo(vehiculo(_, _, Anio, _, CombTexto), carburador) :-
-    integer(Anio),
-    normalizar_combustible(CombTexto, gasolina),
-    umbral_operativo(anio_corte_inyeccion, Corte, _),
-    Anio < Corte, !.
-sistema_alimentacion_vehiculo(vehiculo(_, _, Anio, _, CombTexto), inyeccion_electronica) :-
-    integer(Anio),
-    normalizar_combustible(CombTexto, gasolina),
-    umbral_operativo(anio_corte_inyeccion, Corte, _),
-    Anio >= Corte, !.
-sistema_alimentacion_vehiculo(vehiculo(_, _, _, _, CombTexto), Alimentacion) :-
-    normalizar_combustible(CombTexto, CombNorm),
-    combustible_catalogo(CombNorm, Alimentacion, _, _), !.
+    findall(
+        CombPerfil-AlimentacionPerfil,
+        (   perfil_modelo_vehiculo(
+                MarcaNorm, ModeloNorm, MinAnio, MaxAnio, CombPerfil, _,
+                AlimentacionPerfil
+            ),
+            Anio >= MinAnio,
+            Anio =< MaxAnio
+        ),
+        PerfilesAplicables
+    ),
+    (   PerfilesAplicables == []
+    ->  AlimentacionResuelta = desconocido
+    ;   normalizar_combustible(CombTexto, CombNorm),
+        (   memberchk(CombNorm-AlimentacionPerfil, PerfilesAplicables)
+        ->  AlimentacionResuelta = AlimentacionPerfil
+        ;   throw(error(domain_error(perfil_vehiculo_incompatible, Vehiculo), _))
+        )
+    ),
+    !,
+    Alimentacion = AlimentacionResuelta.
 sistema_alimentacion_vehiculo(_, desconocido).
 
 % tipo_encendido_vehiculo(+Vehiculo, -TipoEncendido)
-% Deduce el mecanismo de ignicion o control motriz segun combustible.
-tipo_encendido_vehiculo(vehiculo(_, _, _, _, CombTexto), TipoEncendido) :-
+% Deduce el encendido solo cuando el perfil confirma la arquitectura.
+tipo_encendido_vehiculo(Vehiculo, TipoEncendido) :-
+    sistema_alimentacion_vehiculo(Vehiculo, Alimentacion),
+    Alimentacion \= desconocido,
+    Vehiculo = vehiculo(_, _, _, _, CombTexto),
     normalizar_combustible(CombTexto, CombNorm),
     combustible_catalogo(CombNorm, _, TipoEncendido, _), !.
 tipo_encendido_vehiculo(_, desconocido).
@@ -205,21 +213,21 @@ subsistema_comprometido(Sintomas, IdSubsistema) :-
 componente_compatible_vehiculo(Vehiculo, carburador) :-
     !,
     sistema_alimentacion_vehiculo(Vehiculo, Sist),
-    (Sist = carburador ; Sist = desconocido).
+    Sist = carburador.
 componente_compatible_vehiculo(Vehiculo, inyectores_combustible) :-
     !,
     sistema_alimentacion_vehiculo(Vehiculo, Sist),
-    (Sist = inyeccion_electronica ; Sist = inyeccion_diesel ; Sist = desconocido).
+    memberchk(Sist, [inyeccion_electronica, inyeccion_diesel]).
 componente_compatible_vehiculo(Vehiculo, sistema_encendido_bujias) :-
     !,
     tipo_encendido_vehiculo(Vehiculo, Enc),
-    (Enc = encendido_por_chispa ; Enc = desconocido).
+    Enc = encendido_por_chispa.
 componente_compatible_vehiculo(Vehiculo, IdComponente) :-
     componente(IdComponente, mecanico, _, _),
     \+ member(IdComponente, [circuito_hidraulico_frenos, discos_freno]),
     !,
     sistema_alimentacion_vehiculo(Vehiculo, Sist),
-    Sist \= propulsion_electrica.
+    memberchk(Sist, [carburador, inyeccion_electronica, inyeccion_diesel]).
 componente_compatible_vehiculo(_, IdComponente) :-
     componente(IdComponente, _, _, _).
 

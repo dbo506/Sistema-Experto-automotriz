@@ -3,3 +3,7 @@
 *.obj
 .vs/
 
+
+# Sesiones y reportes generados
+/backend/sesiones/*.ses
+/reporte_*.txt

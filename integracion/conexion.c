@@ -11,7 +11,9 @@ static void escribirAtomo(FILE *f, const char *texto) {
     const unsigned char *p = (const unsigned char *)texto;
     fputc(39, f);
     for (; *p; p++) {
-        if (*p == 39 || *p == 92) fprintf(f, "\\x%02x\\", (unsigned)*p);
+        /* Se conservan intactos los bytes UTF-8 que no son delimitadores. */
+        if (*p == 39) fputs("''", f);       /* Comilla simple Prolog duplicada. */
+        else if (*p == 92) fputs("\\\\", f); /* Barra inversa Prolog escapada. */
         else fputc(*p, f);
     }
     fputc(39, f);
@@ -53,7 +55,7 @@ static int recibir(FILE *f, Operacion op, Sesion *sesion) {
         if (!n) return 0;
         if (!strcmp(c[0], "FIN") && n == 1) { fin = 1; continue; }
         if (!strcmp(c[0], "ERROR") && n == 2) {
-            if (copiar(linea, sizeof linea, c[1])) printf("Prolog: %s\n", linea);
+            if (copiar(linea, sizeof linea, c[1])) printf("Error: %s\n", linea);
             return 0;
         }
         if (!strcmp(c[0], "OK") && n == 1 && (op == GUARDAR || op == REPORTAR) && !contenido) {
@@ -95,14 +97,14 @@ int ejecutarOperacion(Operacion op, Sesion *sesion, const char *recurso) {
     int correcto = 0, estado;
     if (op < CONSULTAR || op > REPORTAR) return 0;
     f = fopen("backend/puente.pl", "r");
-    if (!f) { puts("Falta backend/puente.pl: integracion pendiente de Daniel y Jose."); return 0; }
+    if (!f) { puts("Error: El servicio de diagnóstico no está disponible."); return 0; }
     fclose(f);
 #ifdef _WIN32
     estado = system("swipl --version >NUL 2>&1");
 #else
     estado = system("swipl --version >/dev/null 2>&1");
 #endif
-    if (estado != 0) { puts("No se pudo ejecutar SWI-Prolog. Agregue swipl al PATH."); return 0; }
+    if (estado != 0) { puts("Error: No se pudo iniciar el servicio de diagnóstico. Verifique que esté instalado y disponible."); return 0; }
     /* Apertura exclusiva C11: no sobrescribe archivos existentes. */
     for (intento = 0; intento < 100; intento++) {
         snprintf(entrada, sizeof entrada, "ipc_%lu_%lu_%u.req", (unsigned long)time(NULL), (unsigned long)clock(), intento);
@@ -152,7 +154,7 @@ int ejecutarOperacion(Operacion op, Sesion *sesion, const char *recurso) {
     remove(entrada);
     remove(salida);
     if (!correcto) puts("La operacion fallo o la respuesta no cumple el protocolo. Sesion conservada.");
-    else if (op == CONSULTAR && !sesion->cantidadResultados) puts("Prolog no encontro diagnosticos.");
-    else puts("Operacion confirmada por Prolog.");
+    else if (op == CONSULTAR && !sesion->cantidadResultados) puts("No se encontraron diagnósticos.");
+    else puts("Operación completada correctamente.");
     return correcto;
 }

@@ -55,7 +55,7 @@ int ejecutarMenu(void) {
                 if (!sesion.tieneVehiculo || !sesion.cantidadSintomas)
                     puts("  [AVISO] Registre un vehiculo y al menos un sintoma.");
                 else {
-                    puts("  Consultando el motor de diagnostico...\n");
+                    puts("  Analizando los datos del vehículo...\n");
                     if (ejecutarOperacion(CONSULTAR, &sesion, ""))
                         mostrarResultados(&sesion);
                 }

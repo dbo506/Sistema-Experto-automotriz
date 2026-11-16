@@ -44,12 +44,16 @@ contexto_vehiculo_texto(vehiculo(Marca, Modelo, Anio, Km, Comb), TextoVehiculo) 
     !,
     sistema_alimentacion_vehiculo(vehiculo(Marca, Modelo, Anio, Km, Comb), SistAlim),
     nivel_desgaste_kilometraje(vehiculo(Marca, Modelo, Anio, Km, Comb), NivelKm),
+    sistema_alimentacion_texto(SistAlim, SistAlimTexto),
     atomic_list_concat(
-        [Marca, ' ', Modelo, ' (', Anio, ', ', Comb, ', ', SistAlim, ', ', Km, ' km - ', NivelKm, ')'],
+        [Marca, ' ', Modelo, ' (', Anio, ', ', Comb, ', ', SistAlimTexto, ', ', Km, ' km - ', NivelKm, ')'],
         '',
         TextoVehiculo
     ).
 contexto_vehiculo_texto(_, 'vehiculo sin datos especificos registrados').
+
+sistema_alimentacion_texto(desconocido, 'arquitectura no confirmada') :- !.
+sistema_alimentacion_texto(Sistema, Sistema).
 
 % resumen_descartes_texto(+Vehiculo, +Sintomas, -TextoDescartes)
 % Resume dinamicamente los descartes de hipotesis incompatibles aplicados.
@@ -242,9 +246,12 @@ limitar_resultados(Lista, Limitada) :-
 % Predicado principal del contrato C/Prolog. Devuelve lista de terminos
 % resultado(Diagnostico, Explicacion, Recomendacion), o [] sin coincidencias.
 diagnosticar(Vehiculo, Sintomas, Resultados) :-
+    validar_consistencia_sintomas(Sintomas),
+    vehiculo_efectivo(Vehiculo, VehiculoEval),
+    sistema_alimentacion_vehiculo(VehiculoEval, _),
     findall(
         Resultado,
-        diagnosticar_hipotesis(Vehiculo, Sintomas, _, Resultado),
+        diagnosticar_hipotesis(VehiculoEval, Sintomas, _, Resultado),
         ResultadosBrutos
     ),
     list_to_set(ResultadosBrutos, ResultadosUnicos),

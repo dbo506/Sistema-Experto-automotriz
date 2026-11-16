@@ -12,6 +12,42 @@
 
 :- consult('reglas.pl').
 
+% validar_consistencia_sintomas(+Sintomas)
+% Rechaza observaciones incompatibles de un mismo intento/medicion. No elimina
+% sintomas ni considera contradictorias senales que describen eventos distintos.
+validar_consistencia_sintomas(Sintomas) :-
+    (   is_list(Sintomas)
+    ->  true
+    ;   throw(error(type_error(list, Sintomas), _))
+    ),
+    findall(
+        SintomaA-SintomaB,
+        (   par_sintomas_contradictorios(SintomaA, SintomaB),
+            memberchk(SintomaA, Sintomas),
+            memberchk(SintomaB, Sintomas)
+        ),
+        Pares
+    ),
+    (   Pares == []
+    ->  true
+    ;   throw(error(domain_error(sintomas_contradictorios, Pares), _))
+    ).
+
+par_sintomas_contradictorios(A, B) :-
+    A @< B,
+    par_sintomas_contradictorios_ordenado(A, B).
+par_sintomas_contradictorios(A, B) :-
+    B @< A,
+    par_sintomas_contradictorios_ordenado(B, A).
+
+par_sintomas_contradictorios_ordenado(motor_arranque_gira_lento, motor_arranque_gira_normal).
+par_sintomas_contradictorios_ordenado(motor_arranque_no_gira, motor_arranque_gira_lento).
+par_sintomas_contradictorios_ordenado(motor_arranque_no_gira, motor_arranque_gira_normal).
+par_sintomas_contradictorios_ordenado(luces_funcionan, luces_no_encienden).
+par_sintomas_contradictorios_ordenado(luces_funcionan, luces_tenues).
+par_sintomas_contradictorios_ordenado(luces_no_encienden, luces_tenues).
+par_sintomas_contradictorios_ordenado(voltaje_bateria_adecuado, voltaje_bateria_bajo).
+
 % ----------------------------------------------------------------------------
 % 1. PREDICADOS INTERMEDIOS DE CONDICION FUNCIONAL
 % ----------------------------------------------------------------------------
@@ -273,17 +309,14 @@ hipotesis_incompatible(Vehiculo, _, bujias_o_bobinas_encendido_fallando,
     tipo_encendido_vehiculo(Vehiculo, Enc),
     member(Enc, [encendido_por_compresion, control_inversor_electrico]).
 
+hipotesis_incompatible(Vehiculo, _, alternador_defectuoso,
+    'el perfil electrico puro no contempla un alternador convencional') :-
+    sistema_alimentacion_vehiculo(Vehiculo, propulsion_electrica).
+
 hipotesis_incompatible(Vehiculo, _, IdFalla,
     'el vehiculo es 100% electrico y carece de motor de combustion interna') :-
     sistema_alimentacion_vehiculo(Vehiculo, propulsion_electrica),
-    member(IdFalla, [
-        bomba_combustible_defectuosa, inyectores_sucios_o_defectuosos,
-        carburador_desajustado_o_sucio, bujias_o_bobinas_encendido_fallando,
-        fuga_empaque_culata, termostato_bloqueado, desgaste_anillos_piston,
-        sensor_maf_map_defectuoso, sensor_posicion_ciguenal_ckp,
-        cuerpo_aceleracion_electronico_descalibrado, motor_arranque_averiado,
-        falla_rele_arranque, falla_solenoide_arranque, falla_circuito_control_arranque
-    ]).
+    falla_exclusiva_combustion_o_arranque(IdFalla).
 
 hipotesis_incompatible(_, Sintomas, IdFalla,
     'el motor de arranque gira normalmente y descarta fallo en circuito de arranque') :-
@@ -301,10 +334,43 @@ hipotesis_incompatible(_, Sintomas, IdFalla,
     ),
     member(IdFalla, [falla_rele_arranque, falla_circuito_control_arranque]).
 
+falla_exclusiva_combustion_o_arranque(IdFalla) :-
+    memberchk(IdFalla, [
+        bomba_combustible_defectuosa, inyectores_sucios_o_defectuosos,
+        carburador_desajustado_o_sucio, bujias_o_bobinas_encendido_fallando,
+        fuga_empaque_culata, termostato_bloqueado, desgaste_anillos_piston,
+        sensor_maf_map_defectuoso, sensor_posicion_ciguenal_ckp,
+        cuerpo_aceleracion_electronico_descalibrado, motor_arranque_averiado,
+        falla_rele_arranque, falla_solenoide_arranque, falla_circuito_control_arranque
+    ]).
+
 % hipotesis_descartada(+Vehiculo, +Sintomas, +IdFalla)
 % Verdadero cuando existe al menos una incompatibilidad probada para IdFalla.
 hipotesis_descartada(Vehiculo, Sintomas, IdFalla) :-
     hipotesis_incompatible(Vehiculo, Sintomas, IdFalla, _), !.
+
+% compatibilidad_falla_vehiculo(+Vehiculo, +IdFalla)
+% Para perfiles desconocidos solo admite hipotesis que no dependen de la
+% arquitectura del tren motriz; para EV excluye fallas de combustion/arranque
+% convencional y alternador.
+compatibilidad_falla_vehiculo(Vehiculo, IdFalla) :-
+    sistema_alimentacion_vehiculo(Vehiculo, propulsion_electrica),
+    !,
+    \+ (   falla_exclusiva_combustion_o_arranque(IdFalla)
+       ;   IdFalla == alternador_defectuoso
+       ).
+compatibilidad_falla_vehiculo(Vehiculo, IdFalla) :-
+    sistema_alimentacion_vehiculo(Vehiculo, desconocido),
+    !,
+    (   falla_compatible_con_perfil_desconocido(IdFalla)
+    ->  true
+    ;   throw(error(domain_error(arquitectura_vehiculo_no_confirmada, Vehiculo), _))
+    ).
+compatibilidad_falla_vehiculo(_, _).
+
+falla_compatible_con_perfil_desconocido(bateria_descargada).
+falla_compatible_con_perfil_desconocido(aire_sistema_frenos).
+falla_compatible_con_perfil_desconocido(discos_freno_deformados).
 
 % descartes_relevantes(+Vehiculo, +Sintomas, -ListaMotivos)
 % Recopila motivos unicos de descarte activos en la evaluacion actual.
@@ -331,18 +397,40 @@ hipotesis_diagnostica(Vehiculo, Sintomas, IdFalla, IdSubsistema, EstadoInferido)
     ;   diagnostico_preliminar(VehiculoEval, Sintomas, IdFalla),
         EstadoInferido = evaluacion_directa_sintomas
     ),
+    compatibilidad_falla_vehiculo(VehiculoEval, IdFalla),
     \+ hipotesis_descartada(VehiculoEval, Sintomas, IdFalla).
 
-% ajustar_longitud_atomo(+Texto, +MaxCaracteres, -TextoSeguro)
-% Recorta un atomo si excede el tamano maximo de buffer en C para evitar truncamiento.
+% ajustar_longitud_atomo(+Texto, +MaxBytesUtf8, -TextoSeguro)
+% Acota por bytes UTF-8 (no por puntos de codigo) para respetar los buffers C.
 ajustar_longitud_atomo(Texto, Max, Texto) :-
-    atom_length(Texto, Longitud),
+    longitud_utf8_texto(Texto, Longitud),
     Longitud =< Max, !.
 ajustar_longitud_atomo(Texto, Max, TextoRecortado) :-
     PrefijoLen is Max - 3,
     PrefijoLen > 0,
-    sub_atom(Texto, 0, PrefijoLen, _, Prefijo),
+    atom_codes(Texto, Codigos),
+    prefijo_utf8(Codigos, PrefijoLen, PrefijoCodigos),
+    atom_codes(Prefijo, PrefijoCodigos),
     atom_concat(Prefijo, '...', TextoRecortado).
+
+longitud_utf8_texto(Texto, Longitud) :-
+    atom_codes(Texto, Codigos),
+    maplist(ancho_utf8_codigo, Codigos, Anchos),
+    sum_list(Anchos, Longitud).
+
+ancho_utf8_codigo(Codigo, 1) :- Codigo =< 0x7f, !.
+ancho_utf8_codigo(Codigo, 2) :- Codigo =< 0x7ff, !.
+ancho_utf8_codigo(Codigo, 3) :- Codigo =< 0xffff, !.
+ancho_utf8_codigo(_, 4).
+
+prefijo_utf8(_, 0, []) :- !.
+prefijo_utf8([Codigo|Resto], Disponible, [Codigo|Prefijo]) :-
+    ancho_utf8_codigo(Codigo, Ancho),
+    Ancho =< Disponible,
+    !,
+    Siguiente is Disponible - Ancho,
+    prefijo_utf8(Resto, Siguiente, Prefijo).
+prefijo_utf8(_, _, []).
 
 % derivar_recomendacion(+Vehiculo, +Sintomas, +IdFalla, -Prueba, -Accion, -RecomendacionTexto)
 % Deriva prueba adicional y accion correctiva contextualizadas para RF-12.
