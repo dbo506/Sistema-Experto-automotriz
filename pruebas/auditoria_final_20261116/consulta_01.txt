@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s backend/consultas.pl -g (sintomas_por_subsistema(electrico,R),writeln(R)->halt(0);halt(1))
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:
+[no_arranca,luces_funcionan,luces_tenues,luces_no_encienden,motor_arranque_no_gira,motor_arranque_gira_lento,motor_arranque_gira_normal,voltaje_bateria_adecuado,voltaje_bateria_bajo,chasquido_al_girar_llave,testigo_bateria_encendido]

@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s backend/consultas.pl -g (sintomas_validos([no_arranca,inventado],R),writeln(R)->halt(0);halt(1))
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:
+[no_arranca]

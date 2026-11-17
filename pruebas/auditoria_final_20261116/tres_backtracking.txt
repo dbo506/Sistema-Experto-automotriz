@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s backend/consultas.pl -g (findall(F,fallas_por_sintoma(no_arranca,F),A),sort(A,UA),length(UA,NA),NA>1,findall(S,sintomas_por_falla(bateria_descargada,S),B),sort(B,UB),length(UB,NB),NB>1,findall(C,componentes_por_subsistema(electrico,C),D),sort(D,UD),length(UD,ND),ND>1,writeln(fallas(NA,UA)),writeln(sintomas(NB,UB)),writeln(componentes(ND,UD))->halt(0);halt(1))
+ENTRADA:
+None
+CODIGO: 0
+fallas(9,[bateria_descargada,bomba_combustible_defectuosa,bujias_o_bobinas_encendido_fallando,falla_circuito_control_arranque,falla_rele_arranque,falla_solenoide_arranque,falla_unidad_control_ecu,motor_arranque_averiado,sensor_posicion_ciguenal_ckp])
+sintomas(5,[luces_no_encienden,luces_tenues,motor_arranque_gira_lento,no_arranca,voltaje_bateria_bajo])
+componentes(7,[alternador,bateria,circuito_control_arranque,motor_arranque,rele_arranque,sistema_encendido_bujias,solenoide_arranque])

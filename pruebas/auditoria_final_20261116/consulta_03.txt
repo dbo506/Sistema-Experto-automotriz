@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s backend/consultas.pl -g (findall(F,fallas_por_sintoma(no_arranca,F),R),writeln(R)->halt(0);halt(1))
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:
+[falla_rele_arranque,falla_solenoide_arranque,falla_circuito_control_arranque,bateria_descargada,motor_arranque_averiado,bujias_o_bobinas_encendido_fallando,bomba_combustible_defectuosa,sensor_posicion_ciguenal_ckp,falla_unidad_control_ecu]

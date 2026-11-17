@@ -1,0 +1,8 @@
+COMANDO: python pruebas/ejecutar_pruebas.py
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:
+Preparados: 15; ejecutados: 15; aprobados: 15; fallidos: 0; no ejecutados: 0.
+

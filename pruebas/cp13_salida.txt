@@ -1,0 +1,6 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (findall(F,fallas_por_sintoma(no_arranca,F),R),writeln(soluciones_reales(R)),run_tests(zytron:cp13_backtracking)->halt(0);halt(1))
+ENTRADA: no_arranca; control negativo inventado
+CODIGO: 0
+
+soluciones_reales([falla_rele_arranque,falla_solenoide_arranque,falla_circuito_control_arranque,bateria_descargada,motor_arranque_averiado,bujias_o_bobinas_encendido_fallando,bomba_combustible_defectuosa,sensor_posicion_ciguenal_ckp,falla_unidad_control_ecu])
+% [1/1] zytron:cp13_backtracking .................... passed (0.005 sec)

@@ -1,0 +1,6 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (eliminar_duplicados([a,b,a,c,b],R),contar_elementos([a,b,c],N),contar_elementos([],Z),writeln(recursion_real(R,N,Z)),run_tests(zytron:cp12_recursion)->halt(0);halt(1))
+ENTRADA: [a,b,a,c,b]; [a,b,c]; []
+CODIGO: 0
+
+recursion_real([a,b,c],3,0)
+% [1/1] zytron:cp12_recursion ....................... passed (0.003 sec)

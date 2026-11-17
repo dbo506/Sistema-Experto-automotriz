@@ -1,0 +1,24 @@
+COMANDO: pruebas/pruebas_frontend.exe 7 pruebas/cp07_entrada.txt
+ENTRADA: ''; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                  INFORMACION REGISTRADA
+==========================================================
+
+  VEHICULO
+  ------------------------------------------------------
+  Marca        : Toyota
+  Modelo       : Corolla
+  Anio         : 2015
+  Kilometraje  : 100000 km
+  Combustible  : gasolina
+
+  SINTOMAS SELECCIONADOS (1)
+  ------------------------------------------------------
+  [ 1] no_arranca
+
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=1 resultados=0
+SINTOMA_REAL no_arranca
+CP07 APROBADO

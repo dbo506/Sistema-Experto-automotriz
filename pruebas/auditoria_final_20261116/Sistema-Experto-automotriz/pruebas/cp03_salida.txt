@@ -1,0 +1,35 @@
+COMANDO: pruebas/pruebas_frontend.exe 3 pruebas/cp03_entrada.txt
+ENTRADA: 'Honda\nCivic\n2018\nvolver\n'; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                   REGISTRO DE VEHICULO
+==========================================================
+
+  [0] Volver al menu principal sin guardar cambios
+
+  Todos los campos son obligatorios.
+  En kilometraje: 0 es valido; escriba volver para cancelar.
+
+  PERFILES CATALOGADOS (escriba 1-14 para elegir o ingrese su marca):
+  ------------------------------------------------------------------
+  [ 1] Toyota      Corolla   (1988-1994)  gasolina   carburador
+  [ 2] Toyota      Corolla   (1995-2026)  gasolina   inyeccion_electronica
+  [ 3] Toyota      Hilux     (2005-2026)  diesel     inyeccion_diesel
+  [ 4] Toyota      Prius     (2004-2026)  hibrido    inyeccion_electronica
+  [ 5] Chevrolet   Spark     (2006-2022)  gasolina   inyeccion_electronica
+  [ 6] Chevrolet   Aveo      (2004-2024)  gasolina   inyeccion_electronica
+  [ 7] Hyundai     Accent    (1996-2026)  gasolina   inyeccion_electronica
+  [ 8] Hyundai     Tucson    (2005-2026)  gasolina   inyeccion_electronica
+  [ 9] Ford        Fiesta    (1998-2023)  gasolina   inyeccion_electronica
+  [10] Ford        Ranger    (2006-2026)  diesel     inyeccion_diesel
+  [11] Nissan      Sentra    (1995-2026)  gasolina   inyeccion_electronica
+  [12] Nissan      Leaf      (2011-2026)  electrico  propulsion_electrica
+  [13] Volkswagen  Gol       (1990-1994)  gasolina   carburador
+  [14] Volkswagen  Gol       (1995-2023)  gasolina   inyeccion_electronica
+
+  Marca (o 1-14 para perfil):   Modelo       :   Anio         :   Kilometraje (volver: cancelar): 
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=1 resultados=1
+SINTOMA_REAL no_arranca
+CP03 APROBADO

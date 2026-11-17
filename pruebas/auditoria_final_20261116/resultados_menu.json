@@ -1,0 +1,62 @@
+[
+  {
+    "caso": "menu_01_02_03_validaciones",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_01_02_03_validaciones.txt"
+  },
+  {
+    "caso": "menu_04_05_07_extremo_a_extremo",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_04_05_07_extremo_a_extremo.txt"
+  },
+  {
+    "caso": "menu_06_recuperacion_otro_proceso",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_06_recuperacion_otro_proceso.txt"
+  },
+  {
+    "caso": "menu_sin_resultados",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_sin_resultados.txt"
+  },
+  {
+    "caso": "menu_errores_backend",
+    "estado": "FALLIDO",
+    "codigo": 0,
+    "evidencia": "menu_errores_backend.txt"
+  },
+  {
+    "caso": "menu_contradiccion",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_contradiccion.txt"
+  },
+  {
+    "caso": "menu_cancelaciones",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_cancelaciones.txt"
+  },
+  {
+    "caso": "menu_reporte_no_sobrescribe",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_reporte_no_sobrescribe.txt"
+  },
+  {
+    "caso": "menu_motor_no_disponible",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_motor_no_disponible.txt"
+  },
+  {
+    "caso": "menu_fin_entrada",
+    "estado": "APROBADO",
+    "codigo": 0,
+    "evidencia": "menu_fin_entrada.txt"
+  }
+]

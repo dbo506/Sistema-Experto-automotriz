@@ -1,0 +1,229 @@
+[
+  {
+    "archivo": "backend/consultas.pl",
+    "clausulas_regla_unicas": 21,
+    "hechos_ground_unicos": 3,
+    "indicadores": [
+      "acciones_por_falla/2",
+      "cantidad_sintomas_subsistema/2",
+      "componentes_por_sintoma/2",
+      "componentes_por_subsistema/2",
+      "contar_elementos/2",
+      "eliminar_duplicados/2",
+      "eliminar_duplicados_aux/3",
+      "fallas_por_severidad/2",
+      "fallas_por_sintoma/2",
+      "fallas_por_sintomas/2",
+      "filtrar_sintomas_desconocidos/2",
+      "filtrar_sintomas_validos/2",
+      "informacion_componente/4",
+      "perfiles_por_combustible/5",
+      "pruebas_por_falla/2",
+      "sintomas_desconocidos_lista/2",
+      "sintomas_por_falla/2",
+      "sintomas_por_subsistema/2",
+      "sintomas_validos/2"
+    ],
+    "predicados": 19,
+    "recursivos_directos": [
+      "contar_elementos/2",
+      "eliminar_duplicados_aux/3",
+      "filtrar_sintomas_desconocidos/2",
+      "filtrar_sintomas_validos/2"
+    ]
+  },
+  {
+    "archivo": "backend/explicaciones.pl",
+    "clausulas_regla_unicas": 17,
+    "hechos_ground_unicos": 0,
+    "indicadores": [
+      "catalogo_sintomas/1",
+      "construir_explicacion_falla/6",
+      "contexto_vehiculo_texto/2",
+      "diagnosticar/3",
+      "diagnosticar_hipotesis/4",
+      "diagnosticar_sesion_activa/1",
+      "limitar_resultados/2",
+      "resumen_descartes_texto/3",
+      "sintomas_desconocidos/2",
+      "sintomas_sustento_falla/3",
+      "sistema_alimentacion_texto/2"
+    ],
+    "predicados": 11,
+    "recursivos_directos": []
+  },
+  {
+    "archivo": "backend/hechos.pl",
+    "clausulas_regla_unicas": 0,
+    "hechos_ground_unicos": 206,
+    "indicadores": [
+      "accion_correctiva/2",
+      "combustible_catalogo/4",
+      "componente/4",
+      "falla_catalogo/5",
+      "perfil_modelo_vehiculo/7",
+      "prueba_verificacion/2",
+      "sintoma_asociado_falla/3",
+      "sintoma_catalogo/4",
+      "subsistema/3",
+      "umbral_operativo/3"
+    ],
+    "predicados": 10,
+    "recursivos_directos": []
+  },
+  {
+    "archivo": "backend/inferencia.pl",
+    "clausulas_regla_unicas": 59,
+    "hechos_ground_unicos": 10,
+    "indicadores": [
+      "ajustar_longitud_atomo/3",
+      "ancho_utf8_codigo/2",
+      "bloqueo_giro_arranque/1",
+      "compatibilidad_falla_vehiculo/2",
+      "derivar_recomendacion/6",
+      "descartes_relevantes/3",
+      "energia_bateria_confirmada/1",
+      "estado_subsistema_inferido/4",
+      "evidencia_caida_tension_arranque/1",
+      "falla_compatible_con_perfil_desconocido/1",
+      "falla_exclusiva_combustion_o_arranque/1",
+      "giro_efectivo_sin_encendido/1",
+      "hipotesis_descartada/3",
+      "hipotesis_diagnostica/5",
+      "hipotesis_incompatible/4",
+      "inferir_falla_compuesta/4",
+      "longitud_utf8_texto/2",
+      "par_sintomas_contradictorios/2",
+      "par_sintomas_contradictorios_ordenado/2",
+      "prefijo_utf8/3",
+      "validar_consistencia_sintomas/1",
+      "vehiculo_combustion_interna/1"
+    ],
+    "predicados": 22,
+    "recursivos_directos": [
+      "prefijo_utf8/3"
+    ]
+  },
+  {
+    "archivo": "backend/persistencia.pl",
+    "clausulas_regla_unicas": 15,
+    "hechos_ground_unicos": 4,
+    "indicadores": [
+      "bytes_utf8/2",
+      "codigos_recurso_validos/1",
+      "guardar_sesion/2",
+      "leer_sesion/2",
+      "lista_resultados_valida/1",
+      "lista_sintomas_valida/1",
+      "preparar_directorio_almacenamiento/0",
+      "recuperar_sesion/2",
+      "resultado_valido/1",
+      "sintomas_sin_duplicados/1",
+      "texto_atomico_valido/2",
+      "validar_destino/1",
+      "validar_recurso/2",
+      "validar_sesion/1",
+      "vehiculo_valido/1"
+    ],
+    "predicados": 15,
+    "recursivos_directos": [
+      "bytes_utf8/2",
+      "codigos_recurso_validos/1",
+      "sintomas_sin_duplicados/1"
+    ]
+  },
+  {
+    "archivo": "backend/puente.pl",
+    "clausulas_regla_unicas": 54,
+    "hechos_ground_unicos": 6,
+    "indicadores": [
+      "codigo_no_control/1",
+      "codigos_sintoma_validos/1",
+      "despachar_solicitud/2",
+      "escribir_registros/2",
+      "escribir_respuesta/2",
+      "leer_solicitud/2",
+      "longitud_utf8_bytes/2",
+      "longitud_utf8_bytes_/3",
+      "main/0",
+      "procesar_solicitud/2",
+      "registros_resultados/2",
+      "registros_sintomas/2",
+      "sintoma_id_formato/1",
+      "tomar_registros_sintoma/3",
+      "traducir_error/2",
+      "validar_registros_recuperacion/3",
+      "validar_registros_resultado/2",
+      "validar_respuesta_c/1",
+      "validar_resultado_c/1",
+      "validar_resultados_c/2",
+      "validar_sesion_con_vehiculo/1",
+      "validar_sintomas_oficiales/1",
+      "validar_solicitud/1",
+      "validar_texto_c/2",
+      "validar_vehiculo_c/1"
+    ],
+    "predicados": 25,
+    "recursivos_directos": [
+      "codigos_sintoma_validos/1",
+      "escribir_registros/2",
+      "longitud_utf8_bytes_/3",
+      "registros_resultados/2",
+      "registros_sintomas/2",
+      "tomar_registros_sintoma/3",
+      "validar_registros_resultado/2",
+      "validar_resultados_c/2"
+    ]
+  },
+  {
+    "archivo": "backend/reglas.pl",
+    "clausulas_regla_unicas": 51,
+    "hechos_ground_unicos": 18,
+    "indicadores": [
+      "alias_combustible/2",
+      "alimentacion_por_anio_y_combustible/3",
+      "antiguedad_vehiculo/2",
+      "cargar_sesion_activa/2",
+      "componente_afectado_por_sintoma/3",
+      "componente_compatible_vehiculo/2",
+      "componente_sospechoso/3",
+      "diagnostico_preliminar/3",
+      "limpiar_sesion_activa/0",
+      "nivel_desgaste_kilometraje/2",
+      "normalizar_combustible/2",
+      "pertenece_subsistema/2",
+      "sintoma_valido/1",
+      "sistema_alimentacion_vehiculo/2",
+      "subsistema_comprometido/2",
+      "tiene_sintoma/2",
+      "tipo_encendido_vehiculo/2",
+      "transmision_vehiculo/2",
+      "vehiculo_efectivo/2"
+    ],
+    "predicados": 19,
+    "recursivos_directos": []
+  },
+  {
+    "archivo": "backend/reportes.pl",
+    "clausulas_regla_unicas": 13,
+    "hechos_ground_unicos": 1,
+    "indicadores": [
+      "escribir_contenido_reporte/8",
+      "escribir_reporte/2",
+      "escribir_reporte_bajo_bloqueo/8",
+      "escribir_resultados/2",
+      "escribir_resultados/3",
+      "escribir_sintomas/2",
+      "escribir_sintomas/3",
+      "generar_reporte/2",
+      "guiones_a_espacios/2",
+      "validar_ruta_reporte/1"
+    ],
+    "predicados": 10,
+    "recursivos_directos": [
+      "escribir_resultados/3",
+      "escribir_sintomas/3",
+      "guiones_a_espacios/2"
+    ]
+  }
+]

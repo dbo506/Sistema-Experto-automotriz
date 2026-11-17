@@ -1,0 +1,231 @@
+COMANDO: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz\auditoria.exe
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+6
+auditoria_e2e
+0
+7
+reporte_auditoria_e2e.txt
+0
+0
+
+CODIGO: 0
+SALIDA:
+
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+==========================================================
+                     RECUPERAR SESION
+==========================================================
+
+  DATOS DE LA SESION
+  ------------------------------------------------------
+
+==========================================================
+  [0] Volver al menu principal
+
+  Nombre o ruta de sesion: 
+==========================================================
+                     RECUPERAR SESION
+==========================================================
+
+  RESULTADO DE LA RECUPERACION
+  ------------------------------------------------------
+
+Operación completada correctamente.
+
+==========================================================
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+==========================================================
+                     GENERAR REPORTE
+==========================================================
+
+
+==========================================================
+                  INFORMACION REGISTRADA
+==========================================================
+
+  VEHICULO
+  ------------------------------------------------------
+  Marca        : Toyota
+  Modelo       : Corolla
+  Anio         : 2015
+  Kilometraje  : 100000 km
+  Combustible  : gasolina
+
+  SINTOMAS SELECCIONADOS (4)
+  ------------------------------------------------------
+  [ 1] no_arranca
+  [ 2] luces_funcionan
+  [ 3] motor_arranque_no_gira
+  [ 4] voltaje_bateria_adecuado
+
+==========================================================
+                RESULTADOS DEL DIAGNOSTICO
+==========================================================
+
+  DIAGNOSTICO [1]
+
+    Falla en rele de arranque
+
+  EXPLICACION
+
+    Por sintomas [no_arranca, luces_funcionan,
+    motor_arranque_no_gira, voltaje_bateria_adecuado] con
+    iluminacion y voltaje adecuados, se deduce
+    interrupcion en circuito de arranque (componente: Rele
+    de arranque, severidad: media) en Toyota Corolla
+    (2015, gasolina, inyeccion_electronica, 100000 km -
+    kilometraje_moderado). Descartes: luces funcionan
+    normalmente y voltaje de bateria es adecuado; el
+    vehiculo no utiliza carburador segun su sistema de
+    alimentacion.
+
+  RECOMENDACION
+
+    Prueba: Intercambiar el rele de arranque por uno
+    identico o medir continuidad en bobina y salida 87.
+    Accion: Sustituir el rele de arranque defectuoso y
+    limpiar terminales de la caja de fusibles.
+
+----------------------------------------------------------
+  DIAGNOSTICO [2]
+
+    Falla en solenoide del motor de arranque
+
+  EXPLICACION
+
+    Por sintomas [no_arranca, luces_funcionan,
+    motor_arranque_no_gira, voltaje_bateria_adecuado] con
+    iluminacion y voltaje adecuados, se deduce
+    interrupcion en circuito de arranque (componente:
+    Solenoide de arranque, severidad: media) en Toyota
+    Corolla (2015, gasolina, inyeccion_electronica, 100000
+    km - kilometraje_moderado). Descartes: luces funcionan
+    normalmente y voltaje de bateria es adecuado; el
+    vehiculo no utiliza carburador segun su sistema de
+    alimentacion.
+
+  RECOMENDACION
+
+    Prueba: Medir llegada de 12V al terminal S del
+    solenoide al accionar llave y verificar caida de
+    tension. Accion: Reemplazar el solenoide de arranque o
+    reparar contactos internos de cobre y ajustar
+    terminales.
+
+----------------------------------------------------------
+  DIAGNOSTICO [3]
+
+    Interrupcion en circuito de control de arranque
+
+  EXPLICACION
+
+    Por sintomas [no_arranca, luces_funcionan,
+    motor_arranque_no_gira, voltaje_bateria_adecuado] con
+    iluminacion y voltaje adecuados, se deduce
+    interrupcion en circuito de arranque (componente:
+    Circuito de control de arranque, severidad: media) en
+    Toyota Corolla (2015, gasolina, inyeccion_electronica,
+    100000 km - kilometraje_moderado). Descartes: luces
+    funcionan normalmente y voltaje de bateria es
+    adecuado; el vehiculo no utiliza carburador segun su
+    sistema de alimentacion.
+
+  RECOMENDACION
+
+    Prueba: Verificar fusible de ignicion, interruptor de
+    arranque, sensor de posicion P/N o embrague y
+    cableado. Accion: Reparar linea interrumpida,
+    reemplazar fusible o interruptor defectuoso y asegurar
+    conectores.
+
+----------------------------------------------------------
+  DIAGNOSTICO [4]
+
+    Averia mecanica o electrica en motor de arranque
+
+  EXPLICACION
+
+    Sintomas compatibles [no_arranca,
+    motor_arranque_no_gira] activan
+    evaluacion_directa_sintomas sobre Motor de arranque
+    (subsistema electrico, severidad: alta) en Toyota
+    Corolla (2015, gasolina, inyeccion_electronica, 100000
+    km - kilometraje_moderado). Descartes: luces funcionan
+    normalmente y voltaje de bateria es adecuado; el
+    vehiculo no utiliza carburador segun su sistema de
+    alimentacion.
+
+  RECOMENDACION
+
+    Prueba: Medir consumo de amperaje durante arranque y
+    verificar giro libre del pinon bendix y carbones.
+    Accion: Desmontar el motor de arranque para sustituir
+    carbones, bujes, bendix o unidad completa.
+
+  Escriba 0 para cancelar.
+
+  Ruta del reporte: Error: El archivo de reporte ya existe; no se sobrescribio.
+La operacion fallo o la respuesta no cumple el protocolo. Sesion conservada.
+
+==========================================================
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+  Sesion finalizada. Hasta pronto.
+

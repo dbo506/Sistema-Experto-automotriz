@@ -1,0 +1,5 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (reporte_prueba->halt(0);halt(1))
+ENTRADA: Sesion diagnosticada CP08; ruta pruebas/reporte_cp15.txt
+CODIGO: 0
+
+reporte_generado(sesion(vehiculo(Toyota,Corolla,2015,100000,gasolina),[pedal_freno_esponjoso],[resultado(Presencia de aire o fuga en circuito hidraulico de frenos,Sintomas compatibles [pedal_freno_esponjoso] activan anomalia_hidraulica_o_friccion_frenos sobre Circuito hidraulico de frenos (subsistema mecanico, severidad: critica) en Toyota Corolla (2015, gasolina, inyeccion_electronica, 100000 km - kilometraje_moderado). Descartes: el vehiculo no utiliza carburador segun su sistema de alimentacion.,Prueba: Inspeccionar nivel de liquido en deposito, buscar fugas en lineas o mordazas y probar recorrido del pedal. Accion: Corregir fugas detectadas, renovar liquido de frenos y purgar completamente las cuatro ruedas.)]))

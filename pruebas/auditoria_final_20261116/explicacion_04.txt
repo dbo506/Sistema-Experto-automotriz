@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s backend/puente.pl -g (diagnosticar(vehiculo('Toyota','Corolla',2015,100000,gasolina),[testigo_bateria_encendido],R),R=[_|_],forall(member(resultado(D,E,C),R),(atom_length(D,LD),LD>0,atom_length(E,LE),LE>0,atom_length(C,LC),LC>0)),writeln(R)->halt(0);halt(1))
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:
+[resultado(Falla en alternador o regulador de voltaje,Sintomas compatibles [testigo_bateria_encendido] activan evaluacion_directa_sintomas sobre Alternador (subsistema electrico, severidad: alta) en Toyota Corolla (2015, gasolina, inyeccion_electronica, 100000 km - kilometraje_moderado). Descartes: el vehiculo no utiliza carburador segun su sistema de alimentacion.,Prueba: Medir voltaje en bornes con motor encendido (esperado 13.8V a 14.5V) y revisar tension de banda. Accion: Reparar o sustituir alternador y regulador, y tensar o reemplazar la correa de accesorios.)]

@@ -1,0 +1,128 @@
+COMANDO: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz\auditoria.exe
+ENTRADA:
+1
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Toyota
+Corolla
+2015
+0
+gasolina
+0
+3
+0
+0
+
+CODIGO: 0
+
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+==========================================================
+                   REGISTRO DE VEHICULO
+==========================================================
+
+  [0] Volver al menu principal sin guardar cambios
+
+  Todos los campos son obligatorios.
+  En kilometraje: 0 es valido; escriba volver para cancelar.
+
+  PERFILES CATALOGADOS (escriba 1-14 para elegir o ingrese su marca):
+  ------------------------------------------------------------------
+  [ 1] Toyota      Corolla   (1988-1994)  gasolina   carburador
+  [ 2] Toyota      Corolla   (1995-2026)  gasolina   inyeccion_electronica
+  [ 3] Toyota      Hilux     (2005-2026)  diesel     inyeccion_diesel
+  [ 4] Toyota      Prius     (2004-2026)  hibrido    inyeccion_electronica
+  [ 5] Chevrolet   Spark     (2006-2022)  gasolina   inyeccion_electronica
+  [ 6] Chevrolet   Aveo      (2004-2024)  gasolina   inyeccion_electronica
+  [ 7] Hyundai     Accent    (1996-2026)  gasolina   inyeccion_electronica
+  [ 8] Hyundai     Tucson    (2005-2026)  gasolina   inyeccion_electronica
+  [ 9] Ford        Fiesta    (1998-2023)  gasolina   inyeccion_electronica
+  [10] Ford        Ranger    (2006-2026)  diesel     inyeccion_diesel
+  [11] Nissan      Sentra    (1995-2026)  gasolina   inyeccion_electronica
+  [12] Nissan      Leaf      (2011-2026)  electrico  propulsion_electrica
+  [13] Volkswagen  Gol       (1990-1994)  gasolina   carburador
+  [14] Volkswagen  Gol       (1995-2023)  gasolina   inyeccion_electronica
+
+  Marca (o 1-14 para perfil): Entrada demasiado larga.
+  Marca (o 1-14 para perfil):   Modelo       :   Anio         :   Kilometraje (volver: cancelar):   Opciones comunes: gasolina, diesel, hibrido, electrico, glp
+  Combustible  : 
+  [OK] Vehiculo registrado correctamente.
+  [INFO] Los resultados anteriores se invalidaron.
+
+==========================================================
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+==========================================================
+                  INFORMACION REGISTRADA
+==========================================================
+
+  VEHICULO
+  ------------------------------------------------------
+  Marca        : Toyota
+  Modelo       : Corolla
+  Anio         : 2015
+  Kilometraje  : 0 km
+  Combustible  : gasolina
+
+  SINTOMAS SELECCIONADOS (0)
+  ------------------------------------------------------
+  [INFO] No hay sintomas seleccionados.
+
+==========================================================
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+  Sesion finalizada. Hasta pronto.
+

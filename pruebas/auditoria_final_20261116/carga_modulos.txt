@@ -1,0 +1,6 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -g consult('backend/puente.pl'),consult('backend/consultas.pl'),halt
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:

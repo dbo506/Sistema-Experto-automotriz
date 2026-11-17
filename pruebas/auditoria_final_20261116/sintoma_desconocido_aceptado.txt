@@ -1,0 +1,157 @@
+COMANDO: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz\auditoria.exe
+ENTRADA:
+2
+1
+inventado
+0
+3
+0
+0
+
+CODIGO: 0
+
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+  Sintomas seleccionados: 0 / 20
+
+  Aun no hay sintomas seleccionados.
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+               CATALOGO OFICIAL DE SINTOMAS
+==========================================================
+
+  --- SUBSISTEMA ELECTRICO ---
+  [ 1]   no_arranca                    El motor no logra ponerse en marcha
+  [ 2]   luces_funcionan               Faros y luces mantienen intensidad normal
+  [ 3]   luces_tenues                  Luces debiles o parpadean al arrancar
+  [ 4]   luces_no_encienden            Ausencia total de iluminacion
+  [ 5]   motor_arranque_no_gira        Motor de arranque inmovil al girar llave
+  [ 6]   motor_arranque_gira_lento     Motor de arranque gira lento y sin fuerza
+  [ 7]   motor_arranque_gira_normal    Arranque gira normal pero no enciende
+  [ 8]   voltaje_bateria_adecuado      Voltaje de bateria en reposo >= 12.4V
+  [ 9]   voltaje_bateria_bajo          Voltaje de bateria menor a 12.0V
+  [10]   chasquido_al_girar_llave      Clic o chasquido al intentar arrancar
+  [11]   testigo_bateria_encendido     Testigo de bateria encendido en tablero
+  --- SUBSISTEMA ELECTRONICO ---
+  [12]   testigo_check_engine          Testigo Check Engine encendido
+  [13]   codigo_error_obd_sensor       Escaner OBD registra falla de sensor
+  [14]   fallo_acelerador_electronico  Respuesta nula o tardia del acelerador
+  [15]   motor_se_apaga_en_marcha      El motor se apaga en circulacion o ralenti
+  --- SUBSISTEMA MECANICO ---
+  [16]   ralenti_inestable             Oscilaciones o vibracion de RPM en ralenti
+  [17]   perdida_potencia              Falta de fuerza y aceleracion deficiente
+  [18]   tirones_al_acelerar           Sacudidas o cortes al acelerar
+  [19]   consumo_excesivo_combustible  Aumento notable en gasto de combustible
+  [20]   olor_gasolina                 Olor fuerte a combustible sin quemar
+  [21]   humo_negro_escape             Humo oscuro denso por escape
+  [22]   humo_azul_escape              Humo azulado por quema de aceite
+  [23]   humo_blanco_escape            Humo blanco espeso y persistente en escape
+  [24]   sobrecalentamiento_motor      Temperatura en zona roja o ebullicion
+  [25]   fuga_refrigerante             Perdida o descenso continuo de refrigerante
+  [26]   ruido_metalico_motor          Golpeteo o sonido metalico en motor
+  [27]   pedal_freno_esponjoso         Pedal de freno blando o se hunde
+  [28]   vibracion_al_frenar           Pulsacion en pedal o vibracion al frenar
+
+  (*) Ya agregado en la sesion actual.
+  [0] Volver al menu principal
+
+  Numero (1-28) o identificador: 
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+
+  [OK] Sintoma agregado.
+
+  Sintomas seleccionados: 1 / 20
+
+  [ 1] inventado
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+==========================================================
+                  INFORMACION REGISTRADA
+==========================================================
+
+  VEHICULO
+  ------------------------------------------------------
+  [INFO] No hay vehiculo registrado.
+
+  SINTOMAS SELECCIONADOS (1)
+  ------------------------------------------------------
+  [ 1] inventado
+
+==========================================================
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+                          ZYTRON
+        SISTEMA EXPERTO DE DIAGNOSTICO AUTOMOTRIZ
+==========================================================
+
+
+  [1] Registrar vehiculo
+  [2] Seleccionar sintomas
+  [3] Ver informacion registrada
+  [4] Realizar diagnostico
+  [5] Guardar sesion
+  [6] Recuperar sesion
+  [7] Generar reporte
+
+  [0] Salir
+
+----------------------------------------------------------
+  Seleccione una opcion: 
+  Sesion finalizada. Hasta pronto.
+

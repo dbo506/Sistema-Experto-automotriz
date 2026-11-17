@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s backend/consultas.pl -g (findall(C,componentes_por_subsistema(electrico,C),R),writeln(R)->halt(0);halt(1))
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:
+[bateria,alternador,motor_arranque,rele_arranque,solenoide_arranque,circuito_control_arranque,sistema_encendido_bujias]

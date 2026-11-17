@@ -1,0 +1,6 @@
+Toyota
+Corolla
+2015
+100000
+gasolina
+0

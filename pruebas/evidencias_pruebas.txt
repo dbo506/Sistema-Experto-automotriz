@@ -1,0 +1,692 @@
+ZYTRON - 15 CASOS DE PRUEBA
+Fecha: 2026-11-16T18:04:56.341802-06:00
+Repositorio: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz
+Rama: main
+
+Alcance: CP01-07 ejecutan funciones reales del frontend mediante un arnes C y stdin redirigido; no simulan clics ni el menu completo. Se compilo tambien la aplicacion completa con integracion/conexion.c. CP08-15 ejecutan predicados originales; no se afirma cobertura extremo a extremo del puente C-Prolog. CP14 cambia solamente persistencia_directorio_backend/1 en memoria del proceso para no escribir en backend. CP15 conserva el reporte generado. Las entradas y salidas completas estan en los archivos individuales.
+Comando de reproduccion desde la raiz: python pruebas/ejecutar_pruebas.py
+Reproduccion: el ejecutor conserva un reporte anterior con nombre fechado antes de repetir CP15; el sistema original rechaza sobrescritura.
+
+Preparados: 15; ejecutados: 15; aprobados: 15; fallidos: 0; no ejecutados: 0.
+
+=== PREPARACION ===
+gcc --version
+Codigo: 0
+gcc (Rev4, Built by MSYS2 project) 16.2.0
+Copyright (C) 2026 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+
+=== PREPARACION ===
+"C:\Program Files\swipl\bin\swipl.exe" --version
+Codigo: 0
+SWI-Prolog version 10.1.16 for x64-win64
+
+
+=== PREPARACION ===
+gcc -std=c11 -Wall -Wextra -pedantic frontend/main.c frontend/menu.c frontend/interfaz.c frontend/validaciones.c integracion/conexion.c -o pruebas/zytron.exe
+Codigo: 0
+
+
+=== PREPARACION ===
+gcc -std=c11 -Wall -Wextra -pedantic pruebas/pruebas_frontend.c frontend/interfaz.c frontend/validaciones.c -o pruebas/pruebas_frontend.exe
+Codigo: 0
+
+
+=== cp01_salida.txt ===
+COMANDO: pruebas/pruebas_frontend.exe 1 pruebas/cp01_entrada.txt
+ENTRADA: 'Toyota\nCorolla\n2015\n100000\ngasolina\n0\n'; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                   REGISTRO DE VEHICULO
+==========================================================
+
+  [0] Volver al menu principal sin guardar cambios
+
+  Todos los campos son obligatorios.
+  En kilometraje: 0 es valido; escriba volver para cancelar.
+
+  PERFILES CATALOGADOS (escriba 1-14 para elegir o ingrese su marca):
+  ------------------------------------------------------------------
+  [ 1] Toyota      Corolla   (1988-1994)  gasolina   carburador
+  [ 2] Toyota      Corolla   (1995-2026)  gasolina   inyeccion_electronica
+  [ 3] Toyota      Hilux     (2005-2026)  diesel     inyeccion_diesel
+  [ 4] Toyota      Prius     (2004-2026)  hibrido    inyeccion_electronica
+  [ 5] Chevrolet   Spark     (2006-2022)  gasolina   inyeccion_electronica
+  [ 6] Chevrolet   Aveo      (2004-2024)  gasolina   inyeccion_electronica
+  [ 7] Hyundai     Accent    (1996-2026)  gasolina   inyeccion_electronica
+  [ 8] Hyundai     Tucson    (2005-2026)  gasolina   inyeccion_electronica
+  [ 9] Ford        Fiesta    (1998-2023)  gasolina   inyeccion_electronica
+  [10] Ford        Ranger    (2006-2026)  diesel     inyeccion_diesel
+  [11] Nissan      Sentra    (1995-2026)  gasolina   inyeccion_electronica
+  [12] Nissan      Leaf      (2011-2026)  electrico  propulsion_electrica
+  [13] Volkswagen  Gol       (1990-1994)  gasolina   carburador
+  [14] Volkswagen  Gol       (1995-2023)  gasolina   inyeccion_electronica
+
+  Marca (o 1-14 para perfil):   Modelo       :   Anio         :   Kilometraje (volver: cancelar):   Opciones comunes: gasolina, diesel, hibrido, electrico, glp
+  Combustible  : 
+  [OK] Vehiculo registrado correctamente.
+  [INFO] Los resultados anteriores se invalidaron.
+
+==========================================================
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=0 resultados=0
+CP01 APROBADO
+
+
+=== cp02_salida.txt ===
+COMANDO: pruebas/pruebas_frontend.exe 2 pruebas/cp02_entrada.txt
+ENTRADA: 'Toyota\nCorolla\nabc\n1800\n2015\n-1\n100000\ngasolina\n0\n'; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                   REGISTRO DE VEHICULO
+==========================================================
+
+  [0] Volver al menu principal sin guardar cambios
+
+  Todos los campos son obligatorios.
+  En kilometraje: 0 es valido; escriba volver para cancelar.
+
+  PERFILES CATALOGADOS (escriba 1-14 para elegir o ingrese su marca):
+  ------------------------------------------------------------------
+  [ 1] Toyota      Corolla   (1988-1994)  gasolina   carburador
+  [ 2] Toyota      Corolla   (1995-2026)  gasolina   inyeccion_electronica
+  [ 3] Toyota      Hilux     (2005-2026)  diesel     inyeccion_diesel
+  [ 4] Toyota      Prius     (2004-2026)  hibrido    inyeccion_electronica
+  [ 5] Chevrolet   Spark     (2006-2022)  gasolina   inyeccion_electronica
+  [ 6] Chevrolet   Aveo      (2004-2024)  gasolina   inyeccion_electronica
+  [ 7] Hyundai     Accent    (1996-2026)  gasolina   inyeccion_electronica
+  [ 8] Hyundai     Tucson    (2005-2026)  gasolina   inyeccion_electronica
+  [ 9] Ford        Fiesta    (1998-2023)  gasolina   inyeccion_electronica
+  [10] Ford        Ranger    (2006-2026)  diesel     inyeccion_diesel
+  [11] Nissan      Sentra    (1995-2026)  gasolina   inyeccion_electronica
+  [12] Nissan      Leaf      (2011-2026)  electrico  propulsion_electrica
+  [13] Volkswagen  Gol       (1990-1994)  gasolina   carburador
+  [14] Volkswagen  Gol       (1995-2023)  gasolina   inyeccion_electronica
+
+  Marca (o 1-14 para perfil):   Modelo       :   Anio         :   [ERROR] Ingrese un entero entre 1886 y 2027.
+  Anio         :   [ERROR] Ingrese un entero entre 1886 y 2027.
+  Anio         :   Kilometraje (volver: cancelar):   [ERROR] Ingrese un entero entre 0 y 2147483647.
+  Kilometraje (volver: cancelar):   Opciones comunes: gasolina, diesel, hibrido, electrico, glp
+  Combustible  : 
+  [OK] Vehiculo registrado correctamente.
+  [INFO] Los resultados anteriores se invalidaron.
+
+==========================================================
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=0 resultados=0
+CP02 APROBADO
+
+
+=== cp03_salida.txt ===
+COMANDO: pruebas/pruebas_frontend.exe 3 pruebas/cp03_entrada.txt
+ENTRADA: 'Honda\nCivic\n2018\nvolver\n'; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                   REGISTRO DE VEHICULO
+==========================================================
+
+  [0] Volver al menu principal sin guardar cambios
+
+  Todos los campos son obligatorios.
+  En kilometraje: 0 es valido; escriba volver para cancelar.
+
+  PERFILES CATALOGADOS (escriba 1-14 para elegir o ingrese su marca):
+  ------------------------------------------------------------------
+  [ 1] Toyota      Corolla   (1988-1994)  gasolina   carburador
+  [ 2] Toyota      Corolla   (1995-2026)  gasolina   inyeccion_electronica
+  [ 3] Toyota      Hilux     (2005-2026)  diesel     inyeccion_diesel
+  [ 4] Toyota      Prius     (2004-2026)  hibrido    inyeccion_electronica
+  [ 5] Chevrolet   Spark     (2006-2022)  gasolina   inyeccion_electronica
+  [ 6] Chevrolet   Aveo      (2004-2024)  gasolina   inyeccion_electronica
+  [ 7] Hyundai     Accent    (1996-2026)  gasolina   inyeccion_electronica
+  [ 8] Hyundai     Tucson    (2005-2026)  gasolina   inyeccion_electronica
+  [ 9] Ford        Fiesta    (1998-2023)  gasolina   inyeccion_electronica
+  [10] Ford        Ranger    (2006-2026)  diesel     inyeccion_diesel
+  [11] Nissan      Sentra    (1995-2026)  gasolina   inyeccion_electronica
+  [12] Nissan      Leaf      (2011-2026)  electrico  propulsion_electrica
+  [13] Volkswagen  Gol       (1990-1994)  gasolina   carburador
+  [14] Volkswagen  Gol       (1995-2023)  gasolina   inyeccion_electronica
+
+  Marca (o 1-14 para perfil):   Modelo       :   Anio         :   Kilometraje (volver: cancelar): 
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=1 resultados=1
+SINTOMA_REAL no_arranca
+CP03 APROBADO
+
+
+=== cp04_salida.txt ===
+COMANDO: pruebas/pruebas_frontend.exe 4 pruebas/cp04_entrada.txt
+ENTRADA: '1\nno_arranca\n0\n'; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+  Sintomas seleccionados: 0 / 20
+
+  Aun no hay sintomas seleccionados.
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+               CATALOGO OFICIAL DE SINTOMAS
+==========================================================
+
+  --- SUBSISTEMA ELECTRICO ---
+  [ 1]   no_arranca                    El motor no logra ponerse en marcha
+  [ 2]   luces_funcionan               Faros y luces mantienen intensidad normal
+  [ 3]   luces_tenues                  Luces debiles o parpadean al arrancar
+  [ 4]   luces_no_encienden            Ausencia total de iluminacion
+  [ 5]   motor_arranque_no_gira        Motor de arranque inmovil al girar llave
+  [ 6]   motor_arranque_gira_lento     Motor de arranque gira lento y sin fuerza
+  [ 7]   motor_arranque_gira_normal    Arranque gira normal pero no enciende
+  [ 8]   voltaje_bateria_adecuado      Voltaje de bateria en reposo >= 12.4V
+  [ 9]   voltaje_bateria_bajo          Voltaje de bateria menor a 12.0V
+  [10]   chasquido_al_girar_llave      Clic o chasquido al intentar arrancar
+  [11]   testigo_bateria_encendido     Testigo de bateria encendido en tablero
+  --- SUBSISTEMA ELECTRONICO ---
+  [12]   testigo_check_engine          Testigo Check Engine encendido
+  [13]   codigo_error_obd_sensor       Escaner OBD registra falla de sensor
+  [14]   fallo_acelerador_electronico  Respuesta nula o tardia del acelerador
+  [15]   motor_se_apaga_en_marcha      El motor se apaga en circulacion o ralenti
+  --- SUBSISTEMA MECANICO ---
+  [16]   ralenti_inestable             Oscilaciones o vibracion de RPM en ralenti
+  [17]   perdida_potencia              Falta de fuerza y aceleracion deficiente
+  [18]   tirones_al_acelerar           Sacudidas o cortes al acelerar
+  [19]   consumo_excesivo_combustible  Aumento notable en gasto de combustible
+  [20]   olor_gasolina                 Olor fuerte a combustible sin quemar
+  [21]   humo_negro_escape             Humo oscuro denso por escape
+  [22]   humo_azul_escape              Humo azulado por quema de aceite
+  [23]   humo_blanco_escape            Humo blanco espeso y persistente en escape
+  [24]   sobrecalentamiento_motor      Temperatura en zona roja o ebullicion
+  [25]   fuga_refrigerante             Perdida o descenso continuo de refrigerante
+  [26]   ruido_metalico_motor          Golpeteo o sonido metalico en motor
+  [27]   pedal_freno_esponjoso         Pedal de freno blando o se hunde
+  [28]   vibracion_al_frenar           Pulsacion en pedal o vibracion al frenar
+
+  (*) Ya agregado en la sesion actual.
+  [0] Volver al menu principal
+
+  Numero (1-28) o identificador: 
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+
+  [OK] Sintoma agregado.
+
+  Sintomas seleccionados: 1 / 20
+
+  [ 1] no_arranca                    (El motor no logra ponerse en marcha)
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=1 resultados=0
+SINTOMA_REAL no_arranca
+CP04 APROBADO
+
+
+=== cp05_salida.txt ===
+COMANDO: pruebas/pruebas_frontend.exe 5 pruebas/cp05_entrada.txt
+ENTRADA: '1\nno_arranca\n1\nno_arranca\n0\n'; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+  Sintomas seleccionados: 0 / 20
+
+  Aun no hay sintomas seleccionados.
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+               CATALOGO OFICIAL DE SINTOMAS
+==========================================================
+
+  --- SUBSISTEMA ELECTRICO ---
+  [ 1]   no_arranca                    El motor no logra ponerse en marcha
+  [ 2]   luces_funcionan               Faros y luces mantienen intensidad normal
+  [ 3]   luces_tenues                  Luces debiles o parpadean al arrancar
+  [ 4]   luces_no_encienden            Ausencia total de iluminacion
+  [ 5]   motor_arranque_no_gira        Motor de arranque inmovil al girar llave
+  [ 6]   motor_arranque_gira_lento     Motor de arranque gira lento y sin fuerza
+  [ 7]   motor_arranque_gira_normal    Arranque gira normal pero no enciende
+  [ 8]   voltaje_bateria_adecuado      Voltaje de bateria en reposo >= 12.4V
+  [ 9]   voltaje_bateria_bajo          Voltaje de bateria menor a 12.0V
+  [10]   chasquido_al_girar_llave      Clic o chasquido al intentar arrancar
+  [11]   testigo_bateria_encendido     Testigo de bateria encendido en tablero
+  --- SUBSISTEMA ELECTRONICO ---
+  [12]   testigo_check_engine          Testigo Check Engine encendido
+  [13]   codigo_error_obd_sensor       Escaner OBD registra falla de sensor
+  [14]   fallo_acelerador_electronico  Respuesta nula o tardia del acelerador
+  [15]   motor_se_apaga_en_marcha      El motor se apaga en circulacion o ralenti
+  --- SUBSISTEMA MECANICO ---
+  [16]   ralenti_inestable             Oscilaciones o vibracion de RPM en ralenti
+  [17]   perdida_potencia              Falta de fuerza y aceleracion deficiente
+  [18]   tirones_al_acelerar           Sacudidas o cortes al acelerar
+  [19]   consumo_excesivo_combustible  Aumento notable en gasto de combustible
+  [20]   olor_gasolina                 Olor fuerte a combustible sin quemar
+  [21]   humo_negro_escape             Humo oscuro denso por escape
+  [22]   humo_azul_escape              Humo azulado por quema de aceite
+  [23]   humo_blanco_escape            Humo blanco espeso y persistente en escape
+  [24]   sobrecalentamiento_motor      Temperatura en zona roja o ebullicion
+  [25]   fuga_refrigerante             Perdida o descenso continuo de refrigerante
+  [26]   ruido_metalico_motor          Golpeteo o sonido metalico en motor
+  [27]   pedal_freno_esponjoso         Pedal de freno blando o se hunde
+  [28]   vibracion_al_frenar           Pulsacion en pedal o vibracion al frenar
+
+  (*) Ya agregado en la sesion actual.
+  [0] Volver al menu principal
+
+  Numero (1-28) o identificador: 
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+
+  [OK] Sintoma agregado.
+
+  Sintomas seleccionados: 1 / 20
+
+  [ 1] no_arranca                    (El motor no logra ponerse en marcha)
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+               CATALOGO OFICIAL DE SINTOMAS
+==========================================================
+
+  --- SUBSISTEMA ELECTRICO ---
+  [ 1] * no_arranca                    El motor no logra ponerse en marcha
+  [ 2]   luces_funcionan               Faros y luces mantienen intensidad normal
+  [ 3]   luces_tenues                  Luces debiles o parpadean al arrancar
+  [ 4]   luces_no_encienden            Ausencia total de iluminacion
+  [ 5]   motor_arranque_no_gira        Motor de arranque inmovil al girar llave
+  [ 6]   motor_arranque_gira_lento     Motor de arranque gira lento y sin fuerza
+  [ 7]   motor_arranque_gira_normal    Arranque gira normal pero no enciende
+  [ 8]   voltaje_bateria_adecuado      Voltaje de bateria en reposo >= 12.4V
+  [ 9]   voltaje_bateria_bajo          Voltaje de bateria menor a 12.0V
+  [10]   chasquido_al_girar_llave      Clic o chasquido al intentar arrancar
+  [11]   testigo_bateria_encendido     Testigo de bateria encendido en tablero
+  --- SUBSISTEMA ELECTRONICO ---
+  [12]   testigo_check_engine          Testigo Check Engine encendido
+  [13]   codigo_error_obd_sensor       Escaner OBD registra falla de sensor
+  [14]   fallo_acelerador_electronico  Respuesta nula o tardia del acelerador
+  [15]   motor_se_apaga_en_marcha      El motor se apaga en circulacion o ralenti
+  --- SUBSISTEMA MECANICO ---
+  [16]   ralenti_inestable             Oscilaciones o vibracion de RPM en ralenti
+  [17]   perdida_potencia              Falta de fuerza y aceleracion deficiente
+  [18]   tirones_al_acelerar           Sacudidas o cortes al acelerar
+  [19]   consumo_excesivo_combustible  Aumento notable en gasto de combustible
+  [20]   olor_gasolina                 Olor fuerte a combustible sin quemar
+  [21]   humo_negro_escape             Humo oscuro denso por escape
+  [22]   humo_azul_escape              Humo azulado por quema de aceite
+  [23]   humo_blanco_escape            Humo blanco espeso y persistente en escape
+  [24]   sobrecalentamiento_motor      Temperatura en zona roja o ebullicion
+  [25]   fuga_refrigerante             Perdida o descenso continuo de refrigerante
+  [26]   ruido_metalico_motor          Golpeteo o sonido metalico en motor
+  [27]   pedal_freno_esponjoso         Pedal de freno blando o se hunde
+  [28]   vibracion_al_frenar           Pulsacion en pedal o vibracion al frenar
+
+  (*) Ya agregado en la sesion actual.
+  [0] Volver al menu principal
+
+  Numero (1-28) o identificador: 
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+
+  [AVISO] El sintoma ya esta seleccionado.
+
+  Sintomas seleccionados: 1 / 20
+
+  [ 1] no_arranca                    (El motor no logra ponerse en marcha)
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=1 resultados=0
+SINTOMA_REAL no_arranca
+CP05 APROBADO
+
+
+=== cp06_salida.txt ===
+COMANDO: pruebas/pruebas_frontend.exe 6 pruebas/cp06_entrada.txt
+ENTRADA: '1\nno_arranca\n1\nluces_tenues\n2\n1\n0\n'; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+  Sintomas seleccionados: 0 / 20
+
+  Aun no hay sintomas seleccionados.
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+               CATALOGO OFICIAL DE SINTOMAS
+==========================================================
+
+  --- SUBSISTEMA ELECTRICO ---
+  [ 1]   no_arranca                    El motor no logra ponerse en marcha
+  [ 2]   luces_funcionan               Faros y luces mantienen intensidad normal
+  [ 3]   luces_tenues                  Luces debiles o parpadean al arrancar
+  [ 4]   luces_no_encienden            Ausencia total de iluminacion
+  [ 5]   motor_arranque_no_gira        Motor de arranque inmovil al girar llave
+  [ 6]   motor_arranque_gira_lento     Motor de arranque gira lento y sin fuerza
+  [ 7]   motor_arranque_gira_normal    Arranque gira normal pero no enciende
+  [ 8]   voltaje_bateria_adecuado      Voltaje de bateria en reposo >= 12.4V
+  [ 9]   voltaje_bateria_bajo          Voltaje de bateria menor a 12.0V
+  [10]   chasquido_al_girar_llave      Clic o chasquido al intentar arrancar
+  [11]   testigo_bateria_encendido     Testigo de bateria encendido en tablero
+  --- SUBSISTEMA ELECTRONICO ---
+  [12]   testigo_check_engine          Testigo Check Engine encendido
+  [13]   codigo_error_obd_sensor       Escaner OBD registra falla de sensor
+  [14]   fallo_acelerador_electronico  Respuesta nula o tardia del acelerador
+  [15]   motor_se_apaga_en_marcha      El motor se apaga en circulacion o ralenti
+  --- SUBSISTEMA MECANICO ---
+  [16]   ralenti_inestable             Oscilaciones o vibracion de RPM en ralenti
+  [17]   perdida_potencia              Falta de fuerza y aceleracion deficiente
+  [18]   tirones_al_acelerar           Sacudidas o cortes al acelerar
+  [19]   consumo_excesivo_combustible  Aumento notable en gasto de combustible
+  [20]   olor_gasolina                 Olor fuerte a combustible sin quemar
+  [21]   humo_negro_escape             Humo oscuro denso por escape
+  [22]   humo_azul_escape              Humo azulado por quema de aceite
+  [23]   humo_blanco_escape            Humo blanco espeso y persistente en escape
+  [24]   sobrecalentamiento_motor      Temperatura en zona roja o ebullicion
+  [25]   fuga_refrigerante             Perdida o descenso continuo de refrigerante
+  [26]   ruido_metalico_motor          Golpeteo o sonido metalico en motor
+  [27]   pedal_freno_esponjoso         Pedal de freno blando o se hunde
+  [28]   vibracion_al_frenar           Pulsacion en pedal o vibracion al frenar
+
+  (*) Ya agregado en la sesion actual.
+  [0] Volver al menu principal
+
+  Numero (1-28) o identificador: 
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+
+  [OK] Sintoma agregado.
+
+  Sintomas seleccionados: 1 / 20
+
+  [ 1] no_arranca                    (El motor no logra ponerse en marcha)
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+==========================================================
+               CATALOGO OFICIAL DE SINTOMAS
+==========================================================
+
+  --- SUBSISTEMA ELECTRICO ---
+  [ 1] * no_arranca                    El motor no logra ponerse en marcha
+  [ 2]   luces_funcionan               Faros y luces mantienen intensidad normal
+  [ 3]   luces_tenues                  Luces debiles o parpadean al arrancar
+  [ 4]   luces_no_encienden            Ausencia total de iluminacion
+  [ 5]   motor_arranque_no_gira        Motor de arranque inmovil al girar llave
+  [ 6]   motor_arranque_gira_lento     Motor de arranque gira lento y sin fuerza
+  [ 7]   motor_arranque_gira_normal    Arranque gira normal pero no enciende
+  [ 8]   voltaje_bateria_adecuado      Voltaje de bateria en reposo >= 12.4V
+  [ 9]   voltaje_bateria_bajo          Voltaje de bateria menor a 12.0V
+  [10]   chasquido_al_girar_llave      Clic o chasquido al intentar arrancar
+  [11]   testigo_bateria_encendido     Testigo de bateria encendido en tablero
+  --- SUBSISTEMA ELECTRONICO ---
+  [12]   testigo_check_engine          Testigo Check Engine encendido
+  [13]   codigo_error_obd_sensor       Escaner OBD registra falla de sensor
+  [14]   fallo_acelerador_electronico  Respuesta nula o tardia del acelerador
+  [15]   motor_se_apaga_en_marcha      El motor se apaga en circulacion o ralenti
+  --- SUBSISTEMA MECANICO ---
+  [16]   ralenti_inestable             Oscilaciones o vibracion de RPM en ralenti
+  [17]   perdida_potencia              Falta de fuerza y aceleracion deficiente
+  [18]   tirones_al_acelerar           Sacudidas o cortes al acelerar
+  [19]   consumo_excesivo_combustible  Aumento notable en gasto de combustible
+  [20]   olor_gasolina                 Olor fuerte a combustible sin quemar
+  [21]   humo_negro_escape             Humo oscuro denso por escape
+  [22]   humo_azul_escape              Humo azulado por quema de aceite
+  [23]   humo_blanco_escape            Humo blanco espeso y persistente en escape
+  [24]   sobrecalentamiento_motor      Temperatura en zona roja o ebullicion
+  [25]   fuga_refrigerante             Perdida o descenso continuo de refrigerante
+  [26]   ruido_metalico_motor          Golpeteo o sonido metalico en motor
+  [27]   pedal_freno_esponjoso         Pedal de freno blando o se hunde
+  [28]   vibracion_al_frenar           Pulsacion en pedal o vibracion al frenar
+
+  (*) Ya agregado en la sesion actual.
+  [0] Volver al menu principal
+
+  Numero (1-28) o identificador: 
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+
+  [OK] Sintoma agregado.
+
+  Sintomas seleccionados: 2 / 20
+
+  [ 1] no_arranca                    (El motor no logra ponerse en marcha)
+  [ 2] luces_tenues                  (Luces debiles o parpadean al arrancar)
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion:   [0] Volver al menu principal
+
+  [ 1] no_arranca
+  [ 2] luces_tenues
+
+  Numero del sintoma que desea quitar (0: volver): 
+==========================================================
+                  SELECCION DE SINTOMAS
+==========================================================
+
+
+  [OK] Sintoma eliminado.
+
+  Sintomas seleccionados: 1 / 20
+
+  [ 1] luces_tenues                  (Luces debiles o parpadean al arrancar)
+
+----------------------------------------------------------
+  [1] Agregar sintoma (ver catalogo)
+  [2] Quitar sintoma
+
+  [0] Volver al menu principal
+
+  Seleccione una opcion: 
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=1 resultados=0
+SINTOMA_REAL luces_tenues
+CP06 APROBADO
+
+
+=== cp07_salida.txt ===
+COMANDO: pruebas/pruebas_frontend.exe 7 pruebas/cp07_entrada.txt
+ENTRADA: ''; sesion inicial Toyota Corolla 2015, 100000 km, gasolina (excepto CP01 vacia). CP03: no_arranca y resultado previo.
+CODIGO: 0
+
+
+==========================================================
+                  INFORMACION REGISTRADA
+==========================================================
+
+  VEHICULO
+  ------------------------------------------------------
+  Marca        : Toyota
+  Modelo       : Corolla
+  Anio         : 2015
+  Kilometraje  : 100000 km
+  Combustible  : gasolina
+
+  SINTOMAS SELECCIONADOS (1)
+  ------------------------------------------------------
+  [ 1] no_arranca
+
+ESTADO_REAL vehiculo=1 marca=Toyota modelo=Corolla anio=2015 km=100000 combustible=gasolina sintomas=1 resultados=0
+SINTOMA_REAL no_arranca
+CP07 APROBADO
+
+
+=== cp08_salida.txt ===
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (diagnosticar(vehiculo('Toyota','Corolla',2015,100000,gasolina),[pedal_freno_esponjoso],R),writeln(resultados_reales(R)),run_tests(zytron:cp08_diagnostico)->halt(0);halt(1))
+ENTRADA: Toyota Corolla 2015 gasolina; [pedal_freno_esponjoso]
+CODIGO: 0
+
+resultados_reales([resultado(Presencia de aire o fuga en circuito hidraulico de frenos,Sintomas compatibles [pedal_freno_esponjoso] activan anomalia_hidraulica_o_friccion_frenos sobre Circuito hidraulico de frenos (subsistema mecanico, severidad: critica) en Toyota Corolla (2015, gasolina, inyeccion_electronica, 100000 km - kilometraje_moderado). Descartes: el vehiculo no utiliza carburador segun su sistema de alimentacion.,Prueba: Inspeccionar nivel de liquido en deposito, buscar fugas en lineas o mordazas y probar recorrido del pedal. Accion: Corregir fugas detectadas, renovar liquido de frenos y purgar completamente las cuatro ruedas.)])
+% [1/1] zytron:cp08_diagnostico ..................... passed (0.005 sec)
+
+
+=== cp09_salida.txt ===
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (findall(F,hipotesis_diagnostica(vehiculo('Toyota','Corolla',2015,100000,gasolina),[no_arranca,luces_funcionan,motor_arranque_no_gira,voltaje_bateria_adecuado],F,_,_),R),writeln(hipotesis_reales(R)),run_tests(zytron:cp09_alternativos)->halt(0);halt(1))
+ENTRADA: [no_arranca,luces_funcionan,motor_arranque_no_gira,voltaje_bateria_adecuado]
+CODIGO: 0
+
+hipotesis_reales([falla_rele_arranque,falla_solenoide_arranque,falla_circuito_control_arranque,motor_arranque_averiado])
+% [1/1] zytron:cp09_alternativos .................... passed (0.004 sec)
+
+
+=== cp10_salida.txt ===
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (findall(E,estado_subsistema_inferido(vehiculo('Toyota','Corolla',2015,100000,gasolina),[no_arranca,luces_funcionan,motor_arranque_no_gira,voltaje_bateria_adecuado],electrico,E),R),writeln(estados_reales(R)),run_tests(zytron:cp10_compuesta)->halt(0);halt(1))
+ENTRADA: Lista CP09; control negativo sin voltaje_bateria_adecuado
+CODIGO: 0
+
+estados_reales([interrupcion_circuito_arranque_con_bateria_sana])
+% [1/1] zytron:cp10_compuesta ....................... passed (0.005 sec)
+
+
+=== cp11_salida.txt ===
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (sintomas_validos([no_arranca,inventado,luces_tenues],R),sintomas_desconocidos_lista([no_arranca,raro,raro],D),writeln(validos(R)),writeln(desconocidos(D)),run_tests(zytron:cp11_listas)->halt(0);halt(1))
+ENTRADA: [no_arranca,inventado,luces_tenues]; [no_arranca,raro,raro]; []
+CODIGO: 0
+
+validos([no_arranca,luces_tenues])
+desconocidos([raro])
+% [1/1] zytron:cp11_listas .......................... passed (0.005 sec)
+
+
+=== cp12_salida.txt ===
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (eliminar_duplicados([a,b,a,c,b],R),contar_elementos([a,b,c],N),contar_elementos([],Z),writeln(recursion_real(R,N,Z)),run_tests(zytron:cp12_recursion)->halt(0);halt(1))
+ENTRADA: [a,b,a,c,b]; [a,b,c]; []
+CODIGO: 0
+
+recursion_real([a,b,c],3,0)
+% [1/1] zytron:cp12_recursion ....................... passed (0.003 sec)
+
+
+=== cp13_salida.txt ===
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (findall(F,fallas_por_sintoma(no_arranca,F),R),writeln(soluciones_reales(R)),run_tests(zytron:cp13_backtracking)->halt(0);halt(1))
+ENTRADA: no_arranca; control negativo inventado
+CODIGO: 0
+
+soluciones_reales([falla_rele_arranque,falla_solenoide_arranque,falla_circuito_control_arranque,bateria_descargada,motor_arranque_averiado,bujias_o_bobinas_encendido_fallando,bomba_combustible_defectuosa,sensor_posicion_ciguenal_ckp,falla_unidad_control_ecu])
+% [1/1] zytron:cp13_backtracking .................... passed (0.005 sec)
+
+
+=== cp14_salida.txt ===
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (recuperar_prueba->halt(0);halt(1))
+ENTRADA: Sesion real diagnosticada CP08; recurso cp14; dos procesos SWI independientes.
+CODIGO: 0
+
+recuperado_real(sesion(vehiculo(Toyota,Corolla,2015,100000,gasolina),[pedal_freno_esponjoso],[resultado(Presencia de aire o fuga en circuito hidraulico de frenos,Sintomas compatibles [pedal_freno_esponjoso] activan anomalia_hidraulica_o_friccion_frenos sobre Circuito hidraulico de frenos (subsistema mecanico, severidad: critica) en Toyota Corolla (2015, gasolina, inyeccion_electronica, 100000 km - kilometraje_moderado). Descartes: el vehiculo no utiliza carburador segun su sistema de alimentacion.,Prueba: Inspeccionar nivel de liquido en deposito, buscar fugas en lineas o mordazas y probar recorrido del pedal. Accion: Corregir fugas detectadas, renovar liquido de frenos y purgar completamente las cuatro ruedas.)]))
+
+
+=== cp15_salida.txt ===
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (reporte_prueba->halt(0);halt(1))
+ENTRADA: Sesion diagnosticada CP08; ruta pruebas/reporte_cp15.txt
+CODIGO: 0
+
+reporte_generado(sesion(vehiculo(Toyota,Corolla,2015,100000,gasolina),[pedal_freno_esponjoso],[resultado(Presencia de aire o fuga en circuito hidraulico de frenos,Sintomas compatibles [pedal_freno_esponjoso] activan anomalia_hidraulica_o_friccion_frenos sobre Circuito hidraulico de frenos (subsistema mecanico, severidad: critica) en Toyota Corolla (2015, gasolina, inyeccion_electronica, 100000 km - kilometraje_moderado). Descartes: el vehiculo no utiliza carburador segun su sistema de alimentacion.,Prueba: Inspeccionar nivel de liquido en deposito, buscar fugas en lineas o mordazas y probar recorrido del pedal. Accion: Corregir fugas detectadas, renovar liquido de frenos y purgar completamente las cuatro ruedas.)]))
+
+
+=== REPORTE CP15 ===
+============================================================
+                         ZYTRON
+          REPORTE DE DIAGNÓSTICO AUTOMOTRIZ
+============================================================
+
+DATOS DEL VEHÍCULO
+------------------------------------------------------------
+Marca:       Toyota
+Modelo:      Corolla
+Año:         2015
+Kilometraje: 100000 km
+Combustible: gasolina
+
+SÍNTOMAS REGISTRADOS
+------------------------------------------------------------
+  1. pedal freno esponjoso (pedal_freno_esponjoso)
+
+RESULTADOS DEL DIAGNÓSTICO
+------------------------------------------------------------
+
+Resultado 1
+  Diagnóstico:   Presencia de aire o fuga en circuito hidraulico de frenos
+  Explicación:   Sintomas compatibles [pedal_freno_esponjoso] activan anomalia_hidraulica_o_friccion_frenos sobre Circuito hidraulico de frenos (subsistema mecanico, severidad: critica) en Toyota Corolla (2015, gasolina, inyeccion_electronica, 100000 km - kilometraje_moderado). Descartes: el vehiculo no utiliza carburador segun su sistema de alimentacion.
+  Recomendación: Prueba: Inspeccionar nivel de liquido en deposito, buscar fugas en lineas o mordazas y probar recorrido del pedal. Accion: Corregir fugas detectadas, renovar liquido de frenos y purgar completamente las cuatro ruedas.
+
+============================================================
+Reporte generado por ZYTRON.
+Fin del reporte.
+
+
+=== GUARDADO CP14 ===
+Codigo 0
+guardado_real(sesion(vehiculo(Toyota,Corolla,2015,100000,gasolina),[pedal_freno_esponjoso],[resultado(Presencia de aire o fuga en circuito hidraulico de frenos,Sintomas compatibles [pedal_freno_esponjoso] activan anomalia_hidraulica_o_friccion_frenos sobre Circuito hidraulico de frenos (subsistema mecanico, severidad: critica) en Toyota Corolla (2015, gasolina, inyeccion_electronica, 100000 km - kilometraje_moderado). Descartes: el vehiculo no utiliza carburador segun su sistema de alimentacion.,Prueba: Inspeccionar nivel de liquido en deposito, buscar fugas en lineas o mordazas y probar recorrido del pedal. Accion: Corregir fugas detectadas, renovar liquido de frenos y purgar completamente las cuatro ruedas.)]))

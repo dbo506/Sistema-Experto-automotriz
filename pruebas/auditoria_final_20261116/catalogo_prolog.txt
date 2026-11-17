@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s backend/consultas.pl -g catalogo_sintomas(R),write_canonical(R),nl,halt
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:
+[no_arranca,luces_funcionan,luces_tenues,luces_no_encienden,motor_arranque_no_gira,motor_arranque_gira_lento,motor_arranque_gira_normal,voltaje_bateria_adecuado,voltaje_bateria_bajo,chasquido_al_girar_llave,testigo_bateria_encendido,testigo_check_engine,codigo_error_obd_sensor,fallo_acelerador_electronico,motor_se_apaga_en_marcha,ralenti_inestable,perdida_potencia,tirones_al_acelerar,consumo_excesivo_combustible,olor_gasolina,humo_negro_escape,humo_azul_escape,humo_blanco_escape,sobrecalentamiento_motor,fuga_refrigerante,ruido_metalico_motor,pedal_freno_esponjoso,vibracion_al_frenar]

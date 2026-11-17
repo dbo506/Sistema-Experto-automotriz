@@ -1,0 +1,6 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (findall(F,hipotesis_diagnostica(vehiculo('Toyota','Corolla',2015,100000,gasolina),[no_arranca,luces_funcionan,motor_arranque_no_gira,voltaje_bateria_adecuado],F,_,_),R),writeln(hipotesis_reales(R)),run_tests(zytron:cp09_alternativos)->halt(0);halt(1))
+ENTRADA: [no_arranca,luces_funcionan,motor_arranque_no_gira,voltaje_bateria_adecuado]
+CODIGO: 0
+
+hipotesis_reales([falla_rele_arranque,falla_solenoide_arranque,falla_circuito_control_arranque,motor_arranque_averiado])
+% [1/1] zytron:cp09_alternativos .................... passed (0.007 sec)

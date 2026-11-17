@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (sintomas_validos([no_arranca,inventado,luces_tenues],R),sintomas_desconocidos_lista([no_arranca,raro,raro],D),writeln(validos(R)),writeln(desconocidos(D)),run_tests(zytron:cp11_listas)->halt(0);halt(1))
+ENTRADA: [no_arranca,inventado,luces_tenues]; [no_arranca,raro,raro]; []
+CODIGO: 0
+
+validos([no_arranca,luces_tenues])
+desconocidos([raro])
+% [1/1] zytron:cp11_listas .......................... passed (0.005 sec)

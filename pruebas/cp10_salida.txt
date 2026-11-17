@@ -1,0 +1,6 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s pruebas/pruebas_prolog.pl -g (findall(E,estado_subsistema_inferido(vehiculo('Toyota','Corolla',2015,100000,gasolina),[no_arranca,luces_funcionan,motor_arranque_no_gira,voltaje_bateria_adecuado],electrico,E),R),writeln(estados_reales(R)),run_tests(zytron:cp10_compuesta)->halt(0);halt(1))
+ENTRADA: Lista CP09; control negativo sin voltaje_bateria_adecuado
+CODIGO: 0
+
+estados_reales([interrupcion_circuito_arranque_con_bateria_sana])
+% [1/1] zytron:cp10_compuesta ....................... passed (0.005 sec)

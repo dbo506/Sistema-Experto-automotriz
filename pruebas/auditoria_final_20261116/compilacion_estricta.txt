@@ -1,0 +1,6 @@
+COMANDO: gcc -std=c11 -Wall -Wextra -pedantic -Werror frontend/main.c frontend/menu.c frontend/interfaz.c frontend/validaciones.c integracion/conexion.c -o auditoria.exe
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:

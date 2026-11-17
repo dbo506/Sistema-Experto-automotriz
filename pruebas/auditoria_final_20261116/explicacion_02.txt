@@ -1,0 +1,7 @@
+COMANDO: "C:\Program Files\swipl\bin\swipl.exe" -q -s backend/puente.pl -g (diagnosticar(vehiculo('Toyota','Corolla',2015,100000,gasolina),[vibracion_al_frenar],R),R=[_|_],forall(member(resultado(D,E,C),R),(atom_length(D,LD),LD>0,atom_length(E,LE),LE>0,atom_length(C,LC),LC>0)),writeln(R)->halt(0);halt(1))
+CWD: C:\Users\joelm\OneDrive\Documentos\2026\Paradigmas\Sistema-Experto-automotriz\pruebas\auditoria_final_20261116\Sistema-Experto-automotriz
+ENTRADA:
+None
+CODIGO: 0
+SALIDA:
+[resultado(Alabeo o desgaste irregular en discos de freno,Sintomas compatibles [vibracion_al_frenar] activan anomalia_hidraulica_o_friccion_frenos sobre Discos de freno (subsistema mecanico, severidad: alta) en Toyota Corolla (2015, gasolina, inyeccion_electronica, 100000 km - kilometraje_moderado). Descartes: el vehiculo no utiliza carburador segun su sistema de alimentacion.,Prueba: Medir alabeo axial de discos con reloj comparador y verificar espesor minimo y estado de pastillas. Accion: Rectificar discos dentro de tolerancia o reemplazar discos y juego completo de pastillas de freno.)]
